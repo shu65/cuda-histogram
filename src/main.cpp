@@ -163,7 +163,7 @@ int main(int argc, char **argv)
 {
   Benchmark(4, 256, false);
   Benchmark(4, 256, true);
-  Benchmark(1, 5 * (1 << 20), false);
-  Benchmark(1, 5 * (1 << 20), true);
+  Benchmark(2, 5 * (1 << 20), false);
+  Benchmark(2, 5 * (1 << 20), true);
   cout << "complated!" << endl;
 }
