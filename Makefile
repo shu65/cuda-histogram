@@ -1,8 +1,7 @@
-#CXXFLAGS=-O3 
-#NVCCFLAGS=-O3 
+COMMON_FLAGS=-O3 -g
 
-CXXFLAGS=-O0 -g
-NVCCFLAGS=-O0 -g -G
+CXXFLAGS=$(COMMON_FLAGS)
+NVCCFLAGS=$(COMMON_FLAGS) -gencode arch=compute_80,code=sm_80 -G
 
 LDFLAGS =
 
@@ -13,7 +12,7 @@ CPP_SRCS=$(shell find $(SRCDIR) -name '*.cpp')
 OBJS+=$(CPP_SRCS)
 OBJS:=$(subst .cpp,.o,$(OBJS))
 OBJS:=$(subst .cu,.o,$(OBJS))
-TARGET=histgram
+TARGET=histogram
 
 .SUFFIXES: .o
 
@@ -22,6 +21,9 @@ all:$(TARGET)
 
 $(TARGET): $(OBJS)
 	nvcc $(LDFLAGS) $(OBJS) -o $@
+
+test: src/test.cu
+	nvcc $(LDFLAGS) $(NVCCFLAGS) src/test.cu -o $@
 
 %.o: %.cpp
 	nvcc -c $(CXXFLAGS) $< -o $@
