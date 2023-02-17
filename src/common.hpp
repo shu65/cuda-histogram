@@ -1,4 +1,3 @@
-#pragma once
+#include <cstdint>
 
-constexpr int kNBins = 1 << 8;//5 * (1 << 20);
-constexpr int kMaxBlocks = 1024;
+constexpr uint32_t kMaxBlocks = 1024;

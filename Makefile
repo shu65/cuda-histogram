@@ -1,7 +1,7 @@
-COMMON_FLAGS=-O3 -g
+COMMON_FLAGS=-O3 #-g
 
 CXXFLAGS=$(COMMON_FLAGS)
-NVCCFLAGS=$(COMMON_FLAGS) -gencode arch=compute_80,code=sm_80 -G
+NVCCFLAGS=$(COMMON_FLAGS) -gencode arch=compute_80,code=sm_80 #-G
 
 LDFLAGS =
 
